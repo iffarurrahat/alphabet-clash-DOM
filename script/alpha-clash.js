@@ -7,6 +7,13 @@
 //   playgroundSection.classList.remove("hidden");
 // }
 
+function handleKeyboardButtonPress() {
+  console.log("press it");
+}
+
+// capture keyboard key press
+document.addEventListener("keyup", handleKeyboardButtonPress);
+
 function continueGame() {
   // step-1 : generate random alphabet
   const alphabet = getARandomAlphabet();
