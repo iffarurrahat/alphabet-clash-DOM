@@ -130,13 +130,16 @@
 
       <!-- final score start -->
       <section
-        class="score flex justify-center items-center min-h-screen hidden"
+        id="final-score"
+        class="flex justify-center items-center min-h-screen hidden px-3 md:px-0"
       >
         <div
-          class="text-white bg-[url(images/score_bg.svg)] py-6 px-10 rounded-2xl space-y-5 text-center"
+          class="text-white bg-[#ffffff25] px-10 py-6 rounded-3xl space-y-5 text-center"
         >
-          <h1 class="text-8xl font-extralight font-anton">Score:</h1>
-          <button class="btn font-bold">Play Again</button>
+          <h1 class="text-6xl md:text-8xl font-extralight font-anton">
+            Score: <span id="game-score">14</span>
+          </h1>
+          <button onclick="play()" class="btn font-bold">Play Again</button>
           <p class="text-xl">Practice will make you Pro</p>
         </div>
       </section>
