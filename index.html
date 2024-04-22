@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alphabet Clash</title>
+    <!-- daisyUI cdn and tailwindCSS cdn-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.10.2/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- style css -->
+    <link rel="stylesheet" href="./style/style.css" />
+    <style>
+      /* .bg-color {
+        background-color: #010313;
+        height: 100vh;
+      }
+      .bg-img {
+        background-image: url(./images/background.png);
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      .text-heading {
+        font-size: 5rem;
+        font-weight: 900;
+        color: white;
+        text-align: center;
+      }
+      .heading-para {
+        text-align: center;
+        color: white;
+      }
+      .home-text-style {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .home-btn {
+        background-color: white;
+        color: #010313;
+        font-weight: 700;
+        padding: 12px 30px;
+        border-radius: 5px;
+        margin-top: 20px;
+      } */
+    </style>
+  </head>
+  <body>
+    <main
+      class="bg-[#010313] min-h-screen bg-[url(images/background.png)] bg-no-repeat bg-center"
+    >
+      <!-- home screen -->
+      <section id="home-screen" class="px-2 md:px-0">
+        <div class="flex flex-col justify-center items-center h-screen">
+          <h1
+            class="text-6xl md:text-8xl font-extrabold uppercase text-white text-center font-anton"
+          >
+            Alphabet Clash
+          </h1>
+          <p class="text-center text-white mt-3 text-xl">
+            Unleash Your Keyboard Kung Fu : Press “Enter” to Play
+          </p>
+          <button
+            onclick="play()"
+            class="bg-white py-3 px-5 text-[#010313] font-bold mt-5 rounded"
+          >
+            Play Now
+          </button>
+        </div>
+      </section>
+
+      <!-- playground start -->
+      <section
+        id="play-ground"
+        class="flex flex-col items-center hidden px-3 md:px-0"
+      >
+        <!-- screen -->
+        <div
+          class="artboard artboard-horizontal w-11/12 md:w-3/5 lg:w-4/5 border-[20px] rounded-2xl border-[#010313CC] bg-[#FFFFFFB3] px-5 md:px-8 mt-32 md:mt-8 lg:mt-10 xl:mt-24 2xl:mt-60"
+        >
+          <div class="flex justify-center">
+            <p class="bg-[#2F2941] px-6 pb-4 rounded-b-xl text-white">
+              Don't watch keyboard while playing...
+            </p>
+          </div>
+          <div class="flex justify-center items-center h-2/3 md:h-full">
+            <p
+              id="current-alphabet"
+              class="text-black text-7xl md:text-9xl font-bold uppercase py-8 md:py-16"
+            >
+              Y
+            </p>
+          </div>
+        </div>
+        <!-- keyboard start-->
+        <div class="mt-8">
+          <div class="flex justify-center gap-1 my-1 w-full">
+            <kbd id="q" class="kbd">q</kbd>
+            <kbd id="w" class="kbd">w</kbd>
+            <kbd id="e" class="kbd">e</kbd>
+            <kbd id="r" class="kbd">r</kbd>
+            <kbd id="t" class="kbd">t</kbd>
+            <kbd id="y" class="kbd">y</kbd>
+            <kbd id="u" class="kbd">u</kbd>
+            <kbd id="i" class="kbd">i</kbd>
+            <kbd id="o" class="kbd">o</kbd>
+            <kbd id="p" class="kbd">p</kbd>
+          </div>
+          <div class="flex justify-center gap-1 my-1 w-full">
+            <kbd id="a" class="kbd">a</kbd>
+            <kbd id="s" class="kbd">s</kbd>
+            <kbd id="d" class="kbd">d</kbd>
+            <kbd id="f" class="kbd">f</kbd>
+            <kbd id="g" class="kbd">g</kbd>
+            <kbd id="h" class="kbd">h</kbd>
+            <kbd id="j" class="kbd">j</kbd>
+            <kbd id="k" class="kbd">k</kbd>
+            <kbd id="l" class="kbd">l</kbd>
+          </div>
+          <div class="flex justify-center gap-1 my-1 w-full">
+            <kbd id="z" class="kbd">z</kbd>
+            <kbd id="x" class="kbd">x</kbd>
+            <kbd id="c" class="kbd">c</kbd>
+            <kbd id="v" class="kbd">v</kbd>
+            <kbd id="b" class="kbd">b</kbd>
+            <kbd id="n" class="kbd">n</kbd>
+            <kbd id="m" class="kbd">m</kbd>
+            <kbd id="/" class="kbd">/</kbd>
+          </div>
+        </div>
+        <!-- keyboard end -->
+
+        <!-- life score -->
+        <div class="flex justify-between w-3/4 mt-5">
+          <button
+            class="py-2 px-6 rounded-full bg-[#894189] text-white flex items-center"
+          >
+            Life
+            <img
+              class="px-1 w-9 h-9 mt-1"
+              src="images/heart.svg"
+              alt="heart icon"
+            />
+            <span>1</span>
+          </button>
+          <button
+            class="py-2 px-6 rounded-full bg-[#360490] text-white flex items-center"
+          >
+            Score
+            <img
+              class="px-1 w-7 h-7"
+              src="images/dollar.svg"
+              alt="dollar icon"
+            />
+            <span>1</span>
+          </button>
+        </div>
+      </section>
+      <!-- playground end -->
+
+      <!-- final score start -->
+      <section
+        class="score flex justify-center items-center min-h-screen hidden"
+      >
+        <div
+          class="text-white bg-[url(images/score_bg.svg)] py-6 px-10 rounded-2xl space-y-5 text-center"
+        >
+          <h1 class="text-8xl font-extralight font-anton">Score:</h1>
+          <button class="btn font-bold">Play Again</button>
+          <p class="text-xl">Practice will make you Pro</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- script file -->
+    <script src="./script/utility.js"></script>
+    <script src="./script/alpha-clash.js"></script>
+  </body>
+</html>
